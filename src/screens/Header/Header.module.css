@@ -1,0 +1,26 @@
+.header {
+  margin: 0 auto;
+  background-color: green;
+  display: inline-flexbox;
+}
+
+.header__links {
+  text-align: center;
+}
+
+.header__links__item {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 30px;
+  color: yellow;
+  width: 50%;
+}
+
+.header__links__item:hover {
+  color: seashell;
+}
+
+.active {
+  text-decoration: underline;
+  color: white;
+}

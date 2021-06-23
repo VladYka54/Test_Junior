@@ -1,0 +1,23 @@
+.header {
+  margin: 0 auto;
+
+  background-color: green;
+  display: inline-flexbox;
+  &__links {
+    text-align: center;
+    &__item {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 30px;
+      color: yellow;
+      width: 50%;
+      &:hover {
+        color: seashell;
+      }
+    }
+  }
+} 
+.active{
+  text-decoration: underline;
+  color: white;
+}

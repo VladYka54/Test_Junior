@@ -1,4 +1,4 @@
-import { ukraineAPI } from "../api/api";
+import { worldAPI } from "../api/api";
 
 const SET_STATISTICS = "SET-STATISTICS";
 const IS_LOADING = "IS-LOADING";
@@ -10,7 +10,7 @@ let initialState = {
   isLoading: false,
 };
 
-const ukraineReducer = (state = initialState, action) => {
+const worldReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_STATISTICS:
       return {
@@ -31,7 +31,7 @@ const ukraineReducer = (state = initialState, action) => {
   }
 };
 
-export let setUkraineStatistics = (
+export let setWorldStatistics = (
   NewConfirmed,
   TotalConfirmed,
   TotalDeaths,
@@ -53,19 +53,19 @@ export const setLoading = (isLoading) => {
   };
 };
 
-export const getUkraineStatistics = () => async (dispatch) => {
+export const getWorldStatistics = () => async (dispatch) => {
   dispatch(setLoading(true));
-  let responce = await ukraineAPI.getUkraineStatistics();
+  let responce = await worldAPI.getGlobalStatistics();
+ dispatch(setLoading(false));
   dispatch(
-    setUkraineStatistics(
-      responce[0].NewConfirmed,
-      responce[0].TotalConfirmed,
-      responce[0].TotalDeaths,
-      responce[0].NewRecovered
+    setWorldStatistics(
+      responce.NewConfirmed,
+      responce.TotalConfirmed,
+      responce.TotalDeaths,
+      responce.NewRecovered
     )
   );
-
-  dispatch(setLoading(false));
+ 
 };
 
-export default ukraineReducer;
+export default worldReducer;

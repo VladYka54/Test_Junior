@@ -1,16 +1,18 @@
 import React from "react";
-import "./App.css";
 import UkraineContainer from "./screens/Ukraine/UkraineContainer";
-import World from "./screens/World/World";
+import WorldContainer from "./screens/World/WorldContainer";
 import Header from "./screens/Header/Header";
 import { Route } from "react-router";
+import style from './App.module.css'
 
 function App() {
   return (
-    <div>
+    <div className={style.wrapper}>
       <Header />
-      <Route path="/Ukraine" render={() => <UkraineContainer />} />
-      <Route path="/World" render={() => <World />} />
+      <div className={style.wrapper__content}>
+        <Route path="/Ukraine" render={() => <UkraineContainer />} />
+        <Route path="/World" render={() => <WorldContainer />} />
+      </div>
     </div>
   );
 }

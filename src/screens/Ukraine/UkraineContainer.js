@@ -1,13 +1,15 @@
 import Ukraine from "./Ukraine";
-import getUkraineStatistics from "../../store/ukraineReducer";
+import {
+  getUkraineStatistics,
+} from "../../store/ukraineReducer";
 import { connect } from "react-redux";
-
 const mapStateToProps = (state) => {
   return {
-    newConfirmed: state.ukraine.NewConfirmed,
+    NewConfirmed: state.ukraine.NewConfirmed,
     TotalConfirmed: state.ukraine.TotalConfirmed,
     TotalDeaths: state.ukraine.TotalDeaths,
     NewRecovered: state.ukraine.NewRecovered,
+    isLoading: state.ukraine.isLoading
   };
 };
 

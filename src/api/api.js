@@ -5,9 +5,17 @@ const instance = axios.create({
 });
 
 export const ukraineAPI = {
-  getStatistics() {
+  getUkraineStatistics() {
     return instance.get(``).then((responce) => {
       return responce.data.Countries.filter((c) => c.Country === "Ukraine");
+    });
+  },
+};
+
+export const worldAPI = {
+  getGlobalStatistics() {
+    return instance.get(``).then((responce) => {
+      return responce.data.Global;
     });
   },
 };
