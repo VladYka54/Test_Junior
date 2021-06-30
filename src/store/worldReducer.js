@@ -1,8 +1,7 @@
-import { worldAPI } from "../api/api";
+import { SET_WORLD_STATISTICS, IS_LOADING } from "./Constants";
+import { handleActions as worldReducer}  from "../store/redux-actions";
 
-const SET_STATISTICS = "SET-STATISTICS";
-const IS_LOADING = "IS-LOADING";
-let initialState = {
+export const initialState = {
   NewConfirmed: 0,
   TotalConfirmed: 0,
   TotalDeaths: 0,
@@ -10,62 +9,24 @@ let initialState = {
   isLoading: false,
 };
 
-const worldReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_STATISTICS:
-      return {
-        ...state,
-        NewConfirmed: action.NewConfirmed,
-        TotalConfirmed: action.TotalConfirmed,
-        TotalDeaths: action.TotalDeaths,
-        NewRecovered: action.NewRecovered,
-      };
-    case IS_LOADING: {
-      return {
-        ...state,
-        isLoading: action.isLoading,
-      };
-    }
-    default:
-      return state;
-  }
-};
-
-export let setWorldStatistics = (
-  NewConfirmed,
-  TotalConfirmed,
-  TotalDeaths,
-  NewRecovered
-) => {
-  return {
-    type: SET_STATISTICS,
-    NewConfirmed,
-    TotalConfirmed,
-    TotalDeaths,
-    NewRecovered,
-  };
-};
-
-export const setLoading = (isLoading) => {
-  return {
-    type: IS_LOADING,
-    isLoading,
-  };
-};
-
-export const getWorldStatistics = () => async (dispatch) => {
-  dispatch(setLoading(true));
-  let responce = await worldAPI.getGlobalStatistics();
- dispatch(setLoading(false));
-  dispatch(
-    setWorldStatistics(
-      responce.NewConfirmed,
-      responce.TotalConfirmed,
-      responce.TotalDeaths,
-      responce.NewRecovered
-    )
-  );
- 
-};
-
-export default worldReducer;
+export default worldReducer({
+  [SET_WORLD_STATISTICS]: (
+    state,
+    action 
+  ) => {
+    return {
+      ...state,
+      NewConfirmed: action.payload.NewRecovered,
+      TotalConfirmed: action.payload.TotalConfirmed,
+      TotalDeaths: action.payload.TotalDeaths,
+      NewRecovered: action.payload.NewRecovered,
+    };
+  },
+  [IS_LOADING]: (state, action) => {
+    console.log(action);
+    return {
+      ...state,
+      isLoading: action.payload
+    };
+  },
+});

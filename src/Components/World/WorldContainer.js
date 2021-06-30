@@ -1,8 +1,8 @@
 import React from "react";
-import World from "./World";
-import { getWorldStatistics } from "../../store/worldReducer";
+import { getWorldStatistics } from "../../store/Thunks";
 import { connect } from "react-redux";
 import Preloader from "./../common/Preloader/preloader";
+import style from "./World.module.css";
 
 class WorldContainer extends React.Component {
   componentDidMount() {
@@ -15,12 +15,13 @@ class WorldContainer extends React.Component {
         {this.props.isLoading ? (
           <Preloader />
         ) : (
-          <World
-            NewConfirmed={this.props.NewConfirmed}
-            TotalConfirmed={this.props.TotalConfirmed}
-            TotalDeaths={this.props.TotalDeaths}
-            NewRecovered={this.props.NewRecovered}
-          />
+          <div className={style.statistics}>
+          <div className={style.item}>Global COVID19 statisctic</div>
+          <div className={style.item}>New Confirmed: {this.props.NewConfirmed}</div>
+          <div className={style.item}>Total Confirmed: {this.props.TotalConfirmed}</div>
+          <div className={style.item}>Total Deaths: {this.props.TotalDeaths}</div>
+          <div className={style.item}>New Recovered: {this.props.NewRecovered}</div>
+        </div>
         )}
       </>
     );
@@ -37,7 +38,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getStat: () => {
       dispatch(getWorldStatistics());
