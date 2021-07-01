@@ -23,7 +23,6 @@ export default worldReducer({
     };
   },
   [IS_LOADING]: (state, action) => {
-    console.log(action);
     return {
       ...state,
       isLoading: action.payload

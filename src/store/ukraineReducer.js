@@ -14,7 +14,6 @@ export default ukraineReducer({
     state,
     action 
   ) => {
-    debugger;
     return {
       ...state,
       NewConfirmed: action.payload.NewRecovered,

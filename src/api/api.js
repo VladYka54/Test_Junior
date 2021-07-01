@@ -8,10 +8,8 @@ const options = (method, url, data = null, headers = {}) => {
     data,
     method,
     baseURL,
-    withCredentials: false,
+    withCredentials: true,
     headers: {
-      'X-Access-Token': '*',
-      'Access-Control-Allow-Origin': '*',
       ...headers,
     },
   };
@@ -22,6 +20,7 @@ export const instance = (method, url, data = null, headers = {}) => {
   return new Promise((resolve, reject) => {
     axiosClient(options(method, url, data, headers))
       .then((responce) => {
+        console.log(responce);
         return resolve(responce);
       })
       .catch((error) => {
