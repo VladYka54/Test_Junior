@@ -1,8 +1,11 @@
-import { getUkraineStatistics } from "../../store/Thunks";
-import { connect } from "react-redux";
-import style from "./Ukraine.module.css";
-import Preloader from "../common/Preloader/preloader";
 import React, { useEffect } from "react";
+//store
+import { getUkraineStatistics } from "../../store/UkraineStatisctics/Thunks";
+import { connect } from "react-redux";
+//utils
+import Preloader from "../../Components/common/Preloader/preloader";
+//styles
+import style from "./Ukraine.module.css";
 
 const Ukraine = ({
   NewConfirmed,
@@ -10,6 +13,7 @@ const Ukraine = ({
   TotalDeaths,
   NewRecovered,
   isLoading,
+  isError,
   getStat,
 }) => {
   useEffect(() => {
@@ -18,6 +22,7 @@ const Ukraine = ({
 
   return (
     <div>
+    {isError ? (<div className={style.error}>Something Wrong</div>): null}
       {isLoading ? (
         <Preloader />
       ) : (
@@ -35,11 +40,13 @@ const Ukraine = ({
 
 const mapStateToProps = (state) => {
   return {
-    NewConfirmed: state.ukraine.NewConfirmed,
-    TotalConfirmed: state.ukraine.TotalConfirmed,
-    TotalDeaths: state.ukraine.TotalDeaths,
-    NewRecovered: state.ukraine.NewRecovered,
-    isLoading: state.ukraine.isLoading,
+    NewConfirmed: state?.ukraine?.NewConfirmed,
+    TotalConfirmed: state?.ukraine?.TotalConfirmed,
+    TotalDeaths: state?.ukraine?.TotalDeaths,
+    NewRecovered: state?.ukraine?.NewRecovered,
+    isLoading: state?.ukraine?.isLoading,
+    isError: state?.ukraine?.isError,
+    errorMessage: state?.ukraine?.errorMessage
   };
 };
 

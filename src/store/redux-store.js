@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import ukraineReducer from "./ukraineReducer";
-import worldReducer from "./worldReducer";
+import ukraineReducer from "./UkraineStatisctics/ukraineReducer";
+import worldReducer from "./WorldStatictics/worldReducer";
 import thunk from "redux-thunk";
 let reducers = combineReducers({
   ukraine: ukraineReducer,

@@ -1,5 +1,5 @@
-import { SET_UKRAINE_STATISTICS, IS_LOADING } from "./Constants";
-import { handleActions as ukraineReducer}  from "../store/redux-actions";
+import { SET_UKRAINE_STATISTICS, IS_LOADING, IS_ERROR } from "./Constants";
+import { handleActions as ukraineReducer } from "../utils/redux-actions";
 
 export const initialState = {
   NewConfirmed: 0,
@@ -7,13 +7,11 @@ export const initialState = {
   TotalDeaths: 0,
   NewRecovered: 0,
   isLoading: false,
+  isError: false,
 };
 
 export default ukraineReducer({
-  [SET_UKRAINE_STATISTICS]: (
-    state,
-    action 
-  ) => {
+  [SET_UKRAINE_STATISTICS]: (state, action) => {
     return {
       ...state,
       NewConfirmed: action.payload.NewRecovered,
@@ -26,6 +24,12 @@ export default ukraineReducer({
     return {
       ...state,
       isLoading: action.payload,
+    };
+  },
+  [IS_ERROR]: (state, action) => {
+    return {
+      ...state,
+      isError: action.payload,
     };
   },
 });

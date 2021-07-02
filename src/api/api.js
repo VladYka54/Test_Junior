@@ -1,6 +1,7 @@
 import axios from "axios";
-import { urlAPI as baseURL } from "../store/Constants";
 const axiosClient = axios.create();
+
+const baseURL = "https://api.covid19api.com/summary";
 
 const options = (method, url, data = null, headers = {}) => {
   const payload = {

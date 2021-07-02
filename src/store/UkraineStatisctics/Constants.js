@@ -1,0 +1,3 @@
+export const SET_UKRAINE_STATISTICS = "SET-UKRAINE-STATISTICS";
+export const IS_LOADING = "IS-LOADING";
+export const IS_ERROR = "IS-ERROR";
