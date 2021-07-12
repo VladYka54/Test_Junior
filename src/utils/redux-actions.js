@@ -1,8 +1,7 @@
 import produce from "immer";
 import { handleActions as raHandleActions } from "redux-actions";
-import { initialState } from '../UkraineStatisctics/ukraineReducer';
 
-export const handleActions = (actions, state = initialState) =>
+export const handleActions = (actions, state = {}) =>
   raHandleActions(
     Object.keys(actions).reduce((acc, key) => {
       acc[key] = produce(actions[key]);

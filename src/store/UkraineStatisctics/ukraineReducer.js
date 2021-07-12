@@ -1,5 +1,9 @@
-import { SET_UKRAINE_STATISTICS, IS_LOADING, IS_ERROR } from "./Constants";
-import { handleActions as ukraineReducer } from "../utils/redux-actions";
+import {
+  SET_UKRAINE_STATISTICS_START,
+  IS_LOADING_SUCCESS,
+  IS_ERROR,
+} from "./Constants";
+import { handleActions as ukraineReducer } from "../../utils/redux-actions";
 
 export const initialState = {
   NewConfirmed: 0,
@@ -11,19 +15,23 @@ export const initialState = {
 };
 
 export default ukraineReducer({
-  [SET_UKRAINE_STATISTICS]: (state, action) => {
+  [SET_UKRAINE_STATISTICS_START]: (state, action) => {
     return {
       ...state,
-      NewConfirmed: action.payload.NewRecovered,
-      TotalConfirmed: action.payload.TotalConfirmed,
-      TotalDeaths: action.payload.TotalDeaths,
-      NewRecovered: action.payload.NewRecovered,
+      isLoading: true,
     };
   },
-  [IS_LOADING]: (state, action) => {
+  [IS_LOADING_SUCCESS]: (state, action) => {
+    const responce = action.payload.data.Countries.filter(
+      (c) => c.Country === "Ukraine"
+    );
     return {
       ...state,
-      isLoading: action.payload,
+      NewConfirmed: responce[0].NewConfirmed,
+      TotalConfirmed: responce[0].TotalConfirmed,
+      TotalDeaths: responce[0].TotalDeaths,
+      NewRecovered: responce[0].NewRecovered,
+      isLoading: false,
     };
   },
   [IS_ERROR]: (state, action) => {

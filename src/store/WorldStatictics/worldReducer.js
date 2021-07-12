@@ -1,5 +1,9 @@
-import { SET_WORLD_STATISTICS, IS_LOADING, IS_ERROR } from "./Constants";
-import { handleActions as worldReducer } from "../utils/redux-actions";
+import {
+  IS_LOADING_SUCCESS,
+  IS_ERROR,
+  SET_WORLD_STATISTICS_START,
+} from "./Constants";
+import { handleActions as worldReducer } from "../../utils/redux-actions";
 
 export const initialState = {
   NewConfirmed: 0,
@@ -11,19 +15,21 @@ export const initialState = {
 };
 
 export default worldReducer({
-  [SET_WORLD_STATISTICS]: (state, action) => {
+  [SET_WORLD_STATISTICS_START]: (state, action) => {
     return {
       ...state,
-      NewConfirmed: action.payload.NewRecovered,
-      TotalConfirmed: action.payload.TotalConfirmed,
-      TotalDeaths: action.payload.TotalDeaths,
-      NewRecovered: action.payload.NewRecovered,
+      isLoading: true,
     };
   },
-  [IS_LOADING]: (state, action) => {
+  [IS_LOADING_SUCCESS]: (state, action) => {
+    const responce = action.payload.data.Global;
     return {
       ...state,
-      isLoading: action.payload,
+      NewConfirmed: responce.NewRecovered,
+      TotalConfirmed: responce.TotalConfirmed,
+      TotalDeaths: responce.TotalDeaths,
+      NewRecovered: responce.NewRecovered,
+      isLoading: false,
     };
   },
   [IS_ERROR]: (state, action) => {

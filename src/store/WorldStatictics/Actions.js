@@ -1,6 +1,10 @@
 import { createAction } from "redux-actions";
-import { SET_WORLD_STATISTICS, IS_LOADING, IS_ERROR } from "./Constants";
+import {
+  SET_WORLD_STATISTICS_START,
+  IS_LOADING_SUCCESS,
+  IS_ERROR,
+} from "./Constants";
 
-export const setLoading = createAction(IS_LOADING);
+export const isLoadingSuccess = createAction(IS_LOADING_SUCCESS);
 export const setError = createAction(IS_ERROR);
-export const setWorldStatistics = createAction(SET_WORLD_STATISTICS);
+export const setWorldStatisticsStart = createAction(SET_WORLD_STATISTICS_START);

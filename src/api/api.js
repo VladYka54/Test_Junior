@@ -20,8 +20,7 @@ const options = (method, url, data = null, headers = {}) => {
 export const instance = (method, url, data = null, headers = {}) => {
   return new Promise((resolve, reject) => {
     axiosClient(options(method, url, data, headers))
-      .then((responce) => {
-        console.log(responce);
+      .then((responce) => {        
         return resolve(responce);
       })
       .catch((error) => {
