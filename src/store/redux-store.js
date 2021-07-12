@@ -1,10 +1,8 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import ukraineReducer from "./UkraineStatisctics/ukraineReducer";
-import worldReducer from "./WorldStatictics/worldReducer";
+import CovidStatisticsReducer from "./CovidStatistic/CovidStatisticsReducer";
 import thunk from "redux-thunk";
 let reducers = combineReducers({
-  ukraine: ukraineReducer,
-  world: worldReducer,
+  covid: CovidStatisticsReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));

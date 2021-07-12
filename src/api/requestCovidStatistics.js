@@ -1,5 +1,5 @@
 import { instance } from "./api";
 
-export const requestUkraineStatistics = () => {
+export const requestCovidStatistics = () => {
   return instance("get", "", null, {});
 };
