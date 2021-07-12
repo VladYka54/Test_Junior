@@ -10,12 +10,6 @@ import style from "./CovidStatistic.module.css";
 
 class CovidStatistic extends React.Component {
   newCountry = this.props.country;
-  // NewConfirmed = 0;
-  // TotalConfirmed = 0;
-  // TotalDeaths = 0;
-  // NewRecovered = 0;
-  // isLoading = false;
-  // isError = false;
 
   getStatistics = () => {
     if (this.newCountry === "Ukraine") {
