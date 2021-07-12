@@ -1,6 +1,7 @@
 import React from "react";
 //store
-import { getCovidStatistics } from "../../store/CovidStatistic/Thunks";
+import { getUkraineStatistic } from "../../store/UkraineStatistic/Thunks";
+import { getWorldStatistic } from "../../store/WorldStatitic/Thunks";
 import { connect } from "react-redux";
 //utils
 import Preloader from "../../Components/common/Preloader/preloader";
@@ -8,13 +9,28 @@ import Preloader from "../../Components/common/Preloader/preloader";
 import style from "./CovidStatistic.module.css";
 
 class CovidStatistic extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props.getStat(this.props.country);
+  newCountry = this.props.country;
+  // NewConfirmed = 0;
+  // TotalConfirmed = 0;
+  // TotalDeaths = 0;
+  // NewRecovered = 0;
+  // isLoading = false;
+  // isError = false;
+
+  getStatistics = () => {
+    if (this.newCountry === "Ukraine") {
+       this.props.getUkraineStatistic();
+    } else {
+      this.props.getWorldStatistic();
+    }
+  };
+
+  componentDidMount() {
+    this.getStatistics();
   }
 
   isShowError() {
-    if (this.props.isError) {
+    if (this.props.WorldIsError || this.props.UkraineIsError) {
       return <div className={style.error}>Something Wrong</div>;
     } else {
       return null;
@@ -22,25 +38,35 @@ class CovidStatistic extends React.Component {
   }
 
   isShowContent() {
-    if (this.props.isLoading) {
+    if (this.props.UkraineIsLoading || this.props.WorldIsLoading) {
       return <Preloader />;
     } else {
       return (
         <div className={style.statistics}>
+          <div className={style.item}>{this.newCountry} COVID19 statisctic</div>
           <div className={style.item}>
-            {this.props.country} COVID19 statisctic
+            New Confirmed:
+            {this.newCountry === "Ukraine"
+              ? this.props.UkraineNewConfirmed
+              : this.props.WorldNewConfirmed}
           </div>
           <div className={style.item}>
-            New Confirmed: {this.props.NewConfirmed}
+            Total Confirmed:{" "}
+            {this.newCountry === "Ukraine"
+              ? this.props.UkraineTotalConfirmed
+              : this.props.WorldTotalConfirmed}
           </div>
           <div className={style.item}>
-            Total Confirmed: {this.props.TotalConfirmed}
+            Total Deaths:{" "}
+            {this.newCountry === "Ukraine"
+              ? this.props.UkraineTotalDeaths
+              : this.props.WorldTotalDeaths}
           </div>
           <div className={style.item}>
-            Total Deaths: {this.props.TotalDeaths}
-          </div>
-          <div className={style.item}>
-            New Recovered: {this.props.NewRecovered}
+            New Recovered:{" "}
+            {this.newCountry === "Ukraine"
+              ? this.props.UkraineNewRecovered
+              : this.props.WorldNewRecovered}
           </div>
         </div>
       );
@@ -59,21 +85,24 @@ class CovidStatistic extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    NewConfirmed: state?.covid?.NewConfirmed,
-    TotalConfirmed: state?.covid?.TotalConfirmed,
-    TotalDeaths: state?.covid?.TotalDeaths,
-    NewRecovered: state?.covid?.NewRecovered,
-    isLoading: state?.covid?.isLoading,
-    isError: state?.covid?.isError,
+    UkraineNewConfirmed: state?.ukraine?.NewConfirmed,
+    UkraineTotalConfirmed: state?.ukraine?.TotalConfirmed,
+    UkraineTotalDeaths: state?.ukraine?.TotalDeaths,
+    UkraineNewRecovered: state?.ukraine?.NewRecovered,
+    UkraineIsLoading: state?.ukraine?.isLoading,
+    UkraineIsError: state?.ukraine?.isError,
+    WorldNewConfirmed: state?.world?.NewConfirmed,
+    WorldTotalConfirmed: state?.world?.TotalConfirmed,
+    WorldTotalDeaths: state?.world?.TotalDeaths,
+    WorldNewRecovered: state?.world?.NewRecovered,
+    WorldIsLoading: state?.world?.isLoading,
+    WorldIsError: state?.world?.isError,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getStat: (country) => {
-      dispatch(getCovidStatistics(country));
-    },
-  };
+const mapDispatchToProps = {
+  getUkraineStatistic,
+  getWorldStatistic,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CovidStatistic);
