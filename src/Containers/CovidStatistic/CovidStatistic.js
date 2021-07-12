@@ -9,22 +9,21 @@ import Preloader from "../../Components/common/Preloader/preloader";
 import style from "./CovidStatistic.module.css";
 
 class CovidStatistic extends React.Component {
-  newCountry = this.props.country;
-
-  getStatistics = () => {
-    if (this.newCountry === "Ukraine") {
-       this.props.getUkraineStatistic();
-    } else {
-      this.props.getWorldStatistic();
-    }
+  state = {
+    NewConfirmed: 0,
+    TotalConfirmed: 0,
+    TotalDeaths: 0,
+    NewRecovered: 0,
   };
+  newCountry = this.props.country;
 
   componentDidMount() {
     this.getStatistics();
+    this.readStatistic();
   }
 
   isShowError() {
-    if (this.props.WorldIsError || this.props.UkraineIsError) {
+    if (this.props.WorldIsError || this.props.ukraineIsError) {
       return <div className={style.error}>Something Wrong</div>;
     } else {
       return null;
@@ -32,7 +31,7 @@ class CovidStatistic extends React.Component {
   }
 
   isShowContent() {
-    if (this.props.UkraineIsLoading || this.props.WorldIsLoading) {
+    if (this.props.ukraineIsLoading || this.props.WorldIsLoading) {
       return <Preloader />;
     } else {
       return (
@@ -40,27 +39,19 @@ class CovidStatistic extends React.Component {
           <div className={style.item}>{this.newCountry} COVID19 statisctic</div>
           <div className={style.item}>
             New Confirmed:
-            {this.newCountry === "Ukraine"
-              ? this.props.UkraineNewConfirmed
-              : this.props.WorldNewConfirmed}
+            {this.state.NewConfirmed}        
           </div>
           <div className={style.item}>
-            Total Confirmed:{" "}
-            {this.newCountry === "Ukraine"
-              ? this.props.UkraineTotalConfirmed
-              : this.props.WorldTotalConfirmed}
+            Total Confirmed:
+            {this.state.TotalConfirmed}{" "}
           </div>
           <div className={style.item}>
-            Total Deaths:{" "}
-            {this.newCountry === "Ukraine"
-              ? this.props.UkraineTotalDeaths
-              : this.props.WorldTotalDeaths}
+            Total Deaths:
+            {this.state.TotalDeaths}
           </div>
           <div className={style.item}>
-            New Recovered:{" "}
-            {this.newCountry === "Ukraine"
-              ? this.props.UkraineNewRecovered
-              : this.props.WorldNewRecovered}
+            New Recovered:
+            {this.state.NewRecovered}
           </div>
         </div>
       );
@@ -75,22 +66,48 @@ class CovidStatistic extends React.Component {
       </>
     );
   }
+
+  getStatistics = () => {
+    if (this.newCountry === "Ukraine") {
+      this.props.getUkraineStatistic();
+    } else {
+      this.props.getWorldStatistic();
+    }
+  };
+
+  readStatistic = () => {
+    if (this.newCountry === "Ukraine") {
+      this.setState({
+        NewConfirmed: this.props.ukraineNewConfirmed,
+        TotalConfirmed: this.props.ukraineTotalConfirmed,
+        TotalDeaths: this.props.ukraineTotalDeaths,
+        NewRecovered: this.props.ukraineNewRecovered,
+      });
+    } else {
+      this.setState({
+        NewConfirmed: this.props.worldNewConfirmed,
+        TotalConfirmed: this.props.worldTotalConfirmed,
+        TotalDeaths: this.props.worldTotalDeaths,
+        NewRecovered: this.props.worldNewRecovered,
+      });
+    }
+  };
 }
 
 const mapStateToProps = (state) => {
   return {
-    UkraineNewConfirmed: state?.ukraine?.NewConfirmed,
-    UkraineTotalConfirmed: state?.ukraine?.TotalConfirmed,
-    UkraineTotalDeaths: state?.ukraine?.TotalDeaths,
-    UkraineNewRecovered: state?.ukraine?.NewRecovered,
-    UkraineIsLoading: state?.ukraine?.isLoading,
-    UkraineIsError: state?.ukraine?.isError,
-    WorldNewConfirmed: state?.world?.NewConfirmed,
-    WorldTotalConfirmed: state?.world?.TotalConfirmed,
-    WorldTotalDeaths: state?.world?.TotalDeaths,
-    WorldNewRecovered: state?.world?.NewRecovered,
-    WorldIsLoading: state?.world?.isLoading,
-    WorldIsError: state?.world?.isError,
+    ukraineNewConfirmed: state?.ukraine?.NewConfirmed,
+    ukraineTotalConfirmed: state?.ukraine?.TotalConfirmed,
+    ukraineTotalDeaths: state?.ukraine?.TotalDeaths,
+    ukraineNewRecovered: state?.ukraine?.NewRecovered,
+    ukraineIsLoading: state?.ukraine?.isLoading,
+    ukraineIsError: state?.ukraine?.isError,
+    worldNewConfirmed: state?.world?.NewConfirmed,
+    worldTotalConfirmed: state?.world?.TotalConfirmed,
+    worldTotalDeaths: state?.world?.TotalDeaths,
+    worldNewRecovered: state?.world?.NewRecovered,
+    worldIsLoading: state?.world?.isLoading,
+    worldIsError: state?.world?.isError,
   };
 };
 
