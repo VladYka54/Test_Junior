@@ -1,0 +1,18 @@
+.Global{
+  text-align: center;
+  padding-top: 200px;
+  padding-bottom: 28.8%;
+  background:   #283c86;
+  background:  linear-gradient(to left, #283c86, #45a247);
+}
+.GlobalIMG{
+  display: flex;
+  justify-content: center;
+
+}
+.GlobalIMG img{
+  max-width: 30px;
+  max-height: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
+}

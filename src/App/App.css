@@ -1,0 +1,19 @@
+.Ukraine{
+  text-align: center;
+  padding-bottom: 25.7%;
+  padding-top: 200px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,0.5130427170868348) 0%, rgba(253,187,45,0.4318102240896359) 100%);
+}
+
+.UkraineFlag{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.UkraineFlag img{
+  max-width: 30px;
+  max-height: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
