@@ -40,13 +40,10 @@ class App extends React.Component {
           Date: country,
         }
       )
-      // console.log(this.state)
     })
-
     }
 
   render() {
-    console.log(this)
 
     return (
       <div className="Ukraine">
