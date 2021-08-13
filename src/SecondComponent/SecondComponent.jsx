@@ -15,11 +15,8 @@ const SecondComponent = (props) => {
       instance.get("/summary").then(res => {
         const global = res.data.Global
       })
+
     })
-
-  useEffect(() => {
-
-  })
 
   return (
     <div className="Global">
