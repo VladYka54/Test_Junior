@@ -68,7 +68,7 @@ html,body,ul,h
 	text-align: center;
 	font-size: 50px;
 }
-@media (max-width: 440px)
+@media screen and (max-width: 440px)
 {
  .menu{
 	 height: 150px;
@@ -76,7 +76,7 @@ html,body,ul,h
  
  }
 }
-@media (max-width: 250px)
+@media screen and (max-width: 250px)
 {
  .menu{
 	 height: 248px;
