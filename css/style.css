@@ -1,0 +1,86 @@
+html,body,ul,h
+{
+	margin:0;
+	padding:0;
+}
+.header
+{
+	background: #2F4F4F;
+	height: 130px;
+	line-height: 65px;
+	font-size: 65px
+}
+.wrapper
+{
+	max-width:1200;
+	margin:0 auto;
+	height:inherit;
+}
+.menu
+{
+	background: #8FBC8F;
+	height: 75px;
+}
+.menu li
+{
+	display: inline;
+	margin-right: 25px;
+	color:#F8F8FF;
+	font-size: 30px;
+}
+.menu li a
+{
+	color: inherit;
+	text-decoration: none;
+	line-height: 65px;
+}
+.content
+{
+	background: #F8F8FF;
+	min-height: 1000px;
+}
+.content img
+{
+	width:150px;
+	float:left;
+	margin-right: 10px;
+}
+.content p 
+{
+	margin:0;
+	font-style: italic;
+}
+.footer
+{
+	height:130px;
+	background:#8FBC8F;
+	margin:0px;
+}
+.button
+{
+   margin: 0;
+   height: 10em;
+  display: flex;
+  align-items: center;
+}
+.mylink 
+{
+	text-align: center;
+	font-size: 50px;
+}
+@media (max-width: 440px)
+{
+ .menu{
+	 height: 150px;
+	float: none;
+ 
+ }
+}
+@media (max-width: 250px)
+{
+ .menu{
+	 height: 248px;
+	float: none;
+ 
+ }
+}
