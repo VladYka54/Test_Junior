@@ -49,10 +49,13 @@ html,body,ul,h
 	width:150px;
 	float:left;
 	margin-right: 10px;
+	margin-left: 100px;
 }
 .content p 
 {
-	margin:0;
+	margin: 0;
+	margin-left:100px;
+	margin-right:100px;
 	font-style: italic;
 }
 .footer
