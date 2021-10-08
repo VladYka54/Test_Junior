@@ -10,6 +10,11 @@ html,body,ul,h
 	line-height: 65px;
 	font-size: 65px
 }
+.bottom
+{
+	background-color: #8FBC8F;
+	height: 75px;
+}
 .wrapper
 {
 	max-width:1200;
@@ -24,7 +29,7 @@ html,body,ul,h
 .menu li
 {
 	display: inline;
-	margin-right: 25px;
+	margin-left: 25px;
 	color:#F8F8FF;
 	font-size: 30px;
 }
@@ -36,7 +41,7 @@ html,body,ul,h
 }
 .content
 {
-	background: #F8F8FF;
+	background-color:thistle;
 	min-height: 1000px;
 }
 .content img
