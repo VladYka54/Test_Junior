@@ -44,6 +44,14 @@ html,body,ul,h
 	background-color:thistle;
 	min-height: 1000px;
 }
+.link
+{
+	text-decoration: none;
+	color: red;
+	font-size: 40px;
+	font-style: italic;
+	margin: 50%;
+}
 .content img
 {
 	width:150px;
@@ -58,23 +66,16 @@ html,body,ul,h
 	margin-right:100px;
 	font-style: italic;
 }
-.footer
-{
-	height:130px;
-	background:#8FBC8F;
-	margin:0px;
-}
 .button
 {
-   margin: 0;
-   height: 10em;
-  display: flex;
-  align-items: center;
-}
-.mylink 
-{
-	text-align: center;
-	font-size: 50px;
+	margin: 0;
+    background: rgb(255, 208, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	height: 50px;
 }
 @media screen and (max-width: 440px)
 {
