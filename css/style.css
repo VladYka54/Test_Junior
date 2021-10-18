@@ -1,7 +1,10 @@
-html,body,ul,h
+* {
+	margin: 0;
+	padding: 0;
+}
+html,body
 {
-	margin:0;
-	padding:0;
+	height: 100%;
 }
 .header
 {
@@ -10,16 +13,16 @@ html,body,ul,h
 	line-height: 65px;
 	font-size: 65px
 }
-.bottom
+.footer
 {
 	background-color: #8FBC8F;
-	height: 75px;
+	flex: 0 0 auto;
 }
 .wrapper
 {
-	max-width:1200;
-	margin:0 auto;
-	height:inherit;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 }
 .menu
 {
@@ -42,7 +45,7 @@ html,body,ul,h
 .content
 {
 	background-color:thistle;
-	min-height: 1000px;
+	flex: 1 0 auto;
 }
 .link
 {
@@ -50,7 +53,9 @@ html,body,ul,h
 	color: red;
 	font-size: 40px;
 	font-style: italic;
-	margin: 50%;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
 }
 .content img
 {
@@ -80,7 +85,7 @@ html,body,ul,h
 @media screen and (max-width: 440px)
 {
  .menu{
-	 height: 150px;
+	height: 150px;
 	float: none;
  
  }
@@ -88,7 +93,7 @@ html,body,ul,h
 @media screen and (max-width: 250px)
 {
  .menu{
-	 height: 248px;
+	height: 248px;
 	float: none;
  
  }
