@@ -9,7 +9,7 @@ html,body
 .header
 {
 	background: #2F4F4F;
-	height: 130px;
+	height: 100px;
 	line-height: 65px;
 	font-size: 65px
 }
@@ -17,6 +17,7 @@ html,body
 {
 	background-color: #8FBC8F;
 	flex: 0 0 auto;
+	text-align: center;
 }
 .wrapper
 {
@@ -27,7 +28,6 @@ html,body
 .menu
 {
 	background: #8FBC8F;
-	height: 75px;
 }
 .menu li
 {
@@ -63,6 +63,7 @@ html,body
 	float:left;
 	margin-right: 10px;
 	margin-left: 100px;
+	cursor: pointer;
 }
 .content p 
 {
@@ -70,6 +71,7 @@ html,body
 	margin-left:100px;
 	margin-right:100px;
 	font-style: italic;
+	text-align: justify;
 }
 .button
 {
@@ -95,6 +97,5 @@ html,body
  .menu{
 	height: 248px;
 	float: none;
- 
  }
 }
