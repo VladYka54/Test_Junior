@@ -53,9 +53,9 @@ html,body
 	color: red;
 	font-size: 40px;
 	font-style: italic;
-	display: flex;
-	justify-content: center;
-  	align-items: center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
 }
 .content img
 {
