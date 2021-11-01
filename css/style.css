@@ -59,19 +59,29 @@ html,body
 }
 .content img
 {
-	width:150px;
-	float:left;
-	margin-right: 10px;
-	margin-left: 100px;
+	float: left;
 	cursor: pointer;
 }
 .content p 
 {
 	margin: 0;
-	margin-left:100px;
-	margin-right:100px;
-	font-style: italic;
 	text-align: justify;
+}
+.middle
+{
+
+	flex-direction: row;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.insidetext
+{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: flex-end;
 }
 .button
 {
@@ -88,14 +98,11 @@ html,body
 {
  .menu{
 	height: 150px;
-	float: none;
- 
  }
 }
 @media screen and (max-width: 250px)
 {
  .menu{
 	height: 248px;
-	float: none;
  }
 }
